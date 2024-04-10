@@ -9,9 +9,9 @@ def generate_launch_description():
     joy_params = os.path.join(get_package_share_directory('xbox_remote_control'),'config','joystick.yaml')
 
     joy_node = Node(
-            package='joy',
-            executable='joy_node',
-            parameters=[joy_params],
+            package='xbox_remote_control',
+            executable='xbox_i2c_joy_publisher'
+            # parameters=[joy_params],
          )
 
 
