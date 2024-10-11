@@ -10,7 +10,7 @@
 #include <iostream>
 #include <memory>
 
-#define I2C_BUS "/dev/i2c-8"          // Use the correct I2C bus
+#define I2C_BUS "/dev/i2c-7"          // Use the correct I2C bus (i2c-7 for jetson orin, i2c-8 for jetson xavier)
 #define I2C_SLAVE_ADDR 0x32           // Slave address
 #define READ_SIZE sizeof(xbox_info_t) // Size of xbox_info_t
 
