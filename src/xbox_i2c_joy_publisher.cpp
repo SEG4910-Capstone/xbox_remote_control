@@ -10,7 +10,7 @@
 #include <iostream>
 #include <memory>
 
-#define I2C_BUS "/dev/i2c-8"          // Use the correct I2C bus
+#define I2C_BUS "/dev/i2c-7"          // Use the correct I2C bus
 #define I2C_SLAVE_ADDR 0x32           // Slave address
 #define READ_SIZE sizeof(xbox_info_t) // Size of xbox_info_t
 
@@ -34,10 +34,10 @@ sensor_msgs::msg::Joy convertToJoyMsg(const xbox_info_t& xboxData) {
     joy_msg.axes.resize(6); // Resize as needed
 
     // Normalize joystick values to [-1.0, 1.0]
-    joy_msg.axes[0] = static_cast<float>(xboxData.joyLHori) / 32767.5 - 1.0;
-    joy_msg.axes[1] = static_cast<float>(xboxData.joyLVert) / 32767.5 - 1.0;
-    joy_msg.axes[2] = static_cast<float>(xboxData.joyRHori) / 32767.5 - 1.0;
-    joy_msg.axes[3] = static_cast<float>(xboxData.joyRVert) / 32767.5 - 1.0;
+    joy_msg.axes[0] = -(static_cast<float>(xboxData.joyLHori) / 32767.5 - 1.0);
+    joy_msg.axes[1] = -(static_cast<float>(xboxData.joyLVert) / 32767.5 - 1.0);
+    joy_msg.axes[2] = -(static_cast<float>(xboxData.joyRHori) / 32767.5 - 1.0);
+    joy_msg.axes[3] = -(static_cast<float>(xboxData.joyRVert) / 32767.5 - 1.0);
     joy_msg.axes[4] = static_cast<float>(xboxData.trigLT) / 1024.0;
     joy_msg.axes[5] = static_cast<float>(xboxData.trigRT) / 1024.0;
 
